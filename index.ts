@@ -35,28 +35,7 @@ async function main({
   // Use act() to take actions on the page
   await page.act("Click on the link for 'Northern California'");
 
-  // Use observe() to plan an action before doing it
-  const [action] = await page.observe(
-    "Type 'Tell me in one sentence why I should use Stagehand' into the search box",
-  );
-  await drawObserveOverlay(page, [action]); // Highlight the search box
-  await page.waitForTimeout(1_000);
-  await clearOverlays(page); // Remove the highlight before typing
-  await page.act(action); // Take the action
-
-  // For more on caching, check out our docs: https://docs.stagehand.dev/examples/caching
-  await page.waitForTimeout(1_000);
-  await actWithCache(page, "Click the suggestion to use AI");
-  await page.waitForTimeout(5_000);
-
-  // Use extract() to extract structured data from the page
-  const { text } = await page.extract({
-    instruction:
-      "extract the text of the AI suggestion from the search results",
-    schema: z.object({
-      text: z.string(),
-    }),
-  });
+  
   stagehand.log({
     category: "create-browser-app",
     message: `Got AI Suggestion`,
