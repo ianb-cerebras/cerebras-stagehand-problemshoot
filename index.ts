@@ -30,7 +30,11 @@ async function main({
   stagehand: Stagehand; // Stagehand instance
 }) {
   // Navigate to a URL
-  await page.goto("https://en.wikipedia.org/wiki/San_Francisco");
+  await page.goto("https://www.google.com/search?q=san+francisco+wikipedia&oq=san+francisco+wikipedia&gs_lcrp=EgZjaHJvbWUyDggAEEUYORhDGIAEGIoFMggIARAAGBYYHjIICAIQABgWGB4yCAgDEAAYFhgeMggIBBAAGBYYHjIICAUQABgWGB4yCAgGEAAYFhgeMgYIBxBFGDzSAQcyNjRqMGo5qAIAsAIB&sourceid=chrome&ie=UTF-8");
+ 
+
+  await page.act("Use click on the San Fransisco wikipedia link'");
+
 
   // Use act() to take actions on the page
   await page.act("Click on the link for 'Northern California'");
